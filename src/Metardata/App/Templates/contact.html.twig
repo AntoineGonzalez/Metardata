@@ -1,0 +1,40 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/contact.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="container">
+        <form method="POST">
+
+            <label for="fname">Prénom</label>
+            <input type="text" id="fname" name="firstname" placeholder="Votre prénom">
+
+            <label for="lname">Nom</label>
+            <input type="text" id="lname" name="lastname" placeholder="Votre nom">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Votre email">
+
+            <label for="country">Pays</label>
+            <select id="country" name="country">
+            <option value="australia">Austalie</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Votre message.." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}

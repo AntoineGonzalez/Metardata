@@ -1,0 +1,40 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/metaForm.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+
+    {% if uploadAccess == true %}
+    <form id="pictures-upload-form" enctype="multipart/form-data">
+        <input id="pictures" name="pictures" type="file" multiple label="Glisser ou cliquer pour ajouter une ou plusieurs images"
+        help="Upload files here and they won't be sent immediately"
+        is="drop-files"/>
+        <div class="submit-row">
+            <button id="send-pictures-btn">Enregistrer</button>
+            <div class="loader upload-completed"></div>
+            <p class="percent"></p>
+        </div>
+    </form>
+
+    <div class="metadata-forms">
+
+    </div>
+
+    <div class="validation-container">
+        <button class="validate-metadata"><i class="fas fa-check"></i>Terminer l'upload</button>
+        <div class="loader validate-loader"></div>
+    </div>
+    {% else %}
+        <h2 class="error">Vous n'avez pas accès à cette page. Merci de vous connecter pour utiliser cette fonctionnalité.</h2>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
+    <script src="public/assets/js/metaForm.js"></script>
+{% endblock %}

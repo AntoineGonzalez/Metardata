@@ -1,0 +1,16 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/about.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <p>About</p>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="public/assets/js/about.js"></script>
+{% endblock %}

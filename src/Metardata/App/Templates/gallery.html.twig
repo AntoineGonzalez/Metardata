@@ -1,0 +1,37 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/gallery.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="picture-ctn">
+        {% for picture in pictures %}
+            <a href="picture/{{picture.id}}">
+                <picture>
+                    <source srcset="{{ picture.path }}">
+                    <img src="{{ picture.path }}" />
+                </picture>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        <a class="back-btn">&laquo;</a>
+        {% for page in pagination %}
+            {% if page == current %}
+                <a class="active page-{{ page }}">{{ page }}</a>
+            {% else %}
+                <a class="page-{{ page }}" onclick="getPicturePage({{ page }})">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+        <a class="next-btn">&raquo;</a>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="public/assets/js/gallery.js"></script>
+{% endblock %}

@@ -1,0 +1,151 @@
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+ background-color: #eee;
+ color: #444;
+ cursor: pointer;
+ padding: 18px;
+ width: 100%;
+ border: none;
+ text-align: left;
+ outline: none;
+ font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+ background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+main {
+    margin: 2em 10% 2em 10%;
+}
+
+.metadata-forms input {
+    width: 100%;
+}
+
+.metadata-single-form {
+    display: grid;
+    grid-row-gap: 5px;
+    grid-template-columns: 1fr 2fr;
+    margin: 1em 1em 1em 1em;
+    width: auto;
+}
+
+textarea {
+  resize: none;
+}
+
+#pictures-upload-form {
+    margin: 2em 10% 2em 10%;
+}
+
+#pictures-upload-form .drop-files {
+    margin-bottom: 1em;
+}
+
+#send-pictures-btn {
+    grid-column: 1;
+    cursor: pointer;
+    height: 50px;
+    margin-right: 1em;
+    border-radius: 5px;
+    background-color: #e57d2b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.update-picture-data {
+    cursor: pointer;
+    height: 50px;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    background-color: #e57d2b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.validate-metadata {
+    display: none;
+    cursor: pointer;
+    float: left;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+i {
+    margin-right: 10px;
+}
+
+.submit-row {
+    display: grid;
+    grid-template-columns: 200px 30px 10px;
+    grid-row: 1;
+}
+
+.percent {
+    padding-right: 5px;
+    font-weight: bold;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.loader {
+    display: none;
+    border: 5px solid #e57d2b; /* Light grey */
+    border-top: 5px solid #f3f3f3 ; /* Blue */
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    animation: spin 2s linear infinite;
+}
+
+.upload-completed {
+    grid-column: 3;
+    grid-row: 1;
+    margin-left: 20px;
+}
+
+.validate-loader {
+    margin-left: 10px;
+    border: 5px solid #28a745;
+    border-top: 5px solid #f3f3f3 ;
+}
+
+.validation-container {
+    display: grid;
+    grid-template-columns: 250px 30px 10px;
+    margin: 2em 10% 2em 10%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

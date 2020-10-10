@@ -1,0 +1,68 @@
+{% extends "template.html.twig" %}
+
+{% block meta %}
+{{ parent() }}
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ data["Headline"] }}" />
+<meta property="og:image" content="https://dev-21500894.users.info.unicaen.fr/web-application-project/{{ picture.path }}" />
+<meta property="og:url" content="https://dev-21500894.users.info.unicaen.fr/web-application-project/picture/{{ picture.id }}" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="metardata.fr" />
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="@metardata" />
+<meta property="twitter:title" content="{{ data["Headline"] }}"  />
+<meta property="twitter:description" content="{{ data["Caption-Abstract"] }}"  />
+<meta property="twitter:image" content="https://dev-21500894.users.info.unicaen.fr/web-application-project/{{ picture.path }}" />{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/details.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+
+    <div id="picture-container" itemscope itemtype="http://schema.org/ImageObject">
+        <picture id="picture" picture-id="{{ picture.id }}">
+            <source srcset="{{ picture.path }}">
+            <img src="{{ picture.path }}" itemprop="contentUrl"/>
+        </picture>
+        <div id="informations">
+            <div class="text-container">
+                <h1 id="title" itemprop="name">{{ data["Headline"] }}</h1>
+                <p id="description" itemprop="description">{{ data["Caption-Abstract"] }}</p>
+                <p id="author" itemprop="author">Réaliser par : {{ data["By-line"] }}</p>
+                <p id="source">Source: {{ data["Source"] }}</p>
+                <p id="date" itemprop="datePublished">Date : {{ data["DateCreated"] }}</p>
+                <h1> Indications géographique : </h1>
+                <ul>
+                    <li itemprop="contentLocation">Adresse : {{ data["Sub-location"] }}</li>
+                    <li>Ville : {{ data["City"] }} </li>
+                    <li>Pays : {{ data["Country-PrimaryLocationName"] }}</li>
+                </ul>
+            </div>
+            <div class="controls-container">
+                <button id="addToShop" class="green-btn" type="button"><i class="fas fa-cart-plus"></i>Ajouter au panier</button>
+                <button id="removeToShop" class="red-btn" type="button"><i class="fas fa-shopping-cart"></i>Retirer du panier</button>
+                {% if canUpdate %}
+                    <button id="modif-btn" class="orange-btn" type="button"><i class="fas fa-edit"></i>Modifier</button>
+                {% endif %}
+                {% if canRemove %}
+                    <button id="suppr-btn" class="red-btn" type="button"><i class="fas fa-trash"></i>Supprimer l'image</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="metadata-form-container"></div>
+    {% if lat is defined %}
+        <picture-map lat="{{ lat }}" long="{{ long }}"/><picture-map>
+    {% else %}
+        <p>Aucunes données GPS</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+    <script type="module" src="public/assets/js/details.js"></script>
+{% endblock %}

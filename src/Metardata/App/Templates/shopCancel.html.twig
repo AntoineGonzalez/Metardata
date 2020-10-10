@@ -1,0 +1,20 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/shopCancel.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="main-container">
+        {{ error | raw }}
+        <a href="gallery">Voir plus d'images !</a>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script type="module" src="public/assets/js/shopCancel.js"></script>
+{% endblock %}

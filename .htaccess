@@ -1,0 +1,17 @@
+allow from all
+satisfy any
+
+Options +FollowSymLinks
+
+RewriteEngine On
+
+RewriteRule ^picture/([0-9]+)$ ?a=makeDetailPage&pictureId=$1
+RewriteRule ^gallery$ ?a=makeGallery
+RewriteRule ^contact$ ?a=makeContactPage
+RewriteRule ^logout$ ?a=logout
+RewriteRule ^login$ ?a=makeLoginPage
+RewriteRule ^about$ ?a=makeAboutPage
+RewriteRule ^newpicture$ ?a=makeForm
+RewriteRule ^shop$ ?a=makeShop
+RewriteRule ^shop_cancel$ ?a=shopCanceled
+RewriteRule ^shop_success$ ?a=shopSuccess

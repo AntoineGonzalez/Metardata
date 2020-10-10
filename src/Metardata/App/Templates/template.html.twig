@@ -1,0 +1,114 @@
+<!doctype html>
+    <html lang="fr">
+    <head>
+        {% block meta %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Métar'data" />
+        <meta property="og:image" content="https://dev-21500894.users.info.unicaen.fr/devoir-idc2019/public/skins/metardata.png" />
+        <meta property="og:url" content="https://dev-21500894.users.info.unicaen.fr/devoir-idc2019/" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="metardata.fr" />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:site" content="@metardata" />
+        <meta property="twitter:title" content="Métar'data"  />
+        <meta property="twitter:description" content="Galerie d'image en ligne et gestion des métadonées !"  />
+        <meta property="twitter:image" content="https://dev-21500894.users.info.unicaen.fr/devoir-idc2019/public/skins/metardata.png" />
+        {% endblock %}
+        <title>{{ title }}</title>
+        {% block stylesheet %}
+            <!-- Block that will contains all stylesheets -->
+            <base href="https://dev-21500894.users.info.unicaen.fr/devoir-idc2019/" />
+            <link rel="stylesheet" href="public/assets/css/template.css"/>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css">
+        {% endblock %}
+
+    </head>
+    <body>
+        <header>
+            {% block header %}
+                <!-- Block containing header stuff like navbar -->
+                <div class="menu-hamburger-container" onclick="displayMenu(this)">
+                  <div class="bar1"></div>
+                  <div class="bar2"></div>
+                  <div class="bar3"></div>
+                </div>
+
+                <h1>Métar'data</h1>
+
+                <ul class="sidenav" style="display:none;">
+                        {% if user is defined %}
+                            <li> <i class="fas fa-clock"></i><a class="connected-user">Bonjour {{ user }} ! </a></li>
+                        {% endif %}
+                        <li><a class="menu-item" href="gallery"><i class="fas fa-image"></i>Gallerie</a></li>
+                        <li><a class="menu-item" href="contact"><i class="fas fa-envelope-open"></i>Contact</a></li>
+                        <li><a class="menu-item" href="about"><i class="fas fa-address-card"></i>A Propos</a></li>
+                        <li><a class="menu-item" href="shop"><i class="fas fa-shopping-cart"></i>Panier</a></li>
+                        {% if user is defined %}
+                            <li><a class="menu-item" href="newpicture"><i class="fas fa-arrow-up"></i>Importer une image</a></li>
+                            <li><a class="menu-item" href="logout"><i class="fas fa-power-off"></i>Déconnexion</a></li>
+                        {% else %}
+                            <li><a class="menu-item" href="login"><i class="fas fa-power-off"></i>Connexion</a></li>
+                        {% endif %}
+                    </ul>
+            {% endblock %}
+            <template class="metadata-form-template">
+                <div class="collapsible-content">
+                    <form class="metadata-single-form">
+                        <label for="Headline">Titre : </label>
+                        <input name="Headline" type="text" disabled/>
+                        <label for="By-line">Auteur : </label>
+                        <input name="By-line" type="text" disabled/>
+                        <label for="Caption-Abstract">Description : </label>
+                        <textarea name="Caption-Abstract" rows="5" disabled></textarea>
+                        <label for="DateCreated">Date : </label>
+                        <input name="DateCreated" type="text" disabled/>
+                        <label for="Source">Source : </label>
+                        <input name="Source" type="text" disabled/>
+                        <label for="Credit">Crédits : </label>
+                        <input name="Credit" type="text" disabled/>
+                        <label for="localization">Localisation : </label>
+                        <input name="localization" type="text" disabled/>
+                        <label for="City">Ville : </label>
+                        <input name="City" type="text" disabled/>
+                        <label for="Country-PrimaryLocationName">Pays : </label>
+                        <input name="Country-PrimaryLocationName" type="text" disabled/>
+                        <label for="CopyrightNotice">Copyright : </label>
+                        <input name="CopyrightNotice" type="text" disabled/>
+                    </form>
+                    <button updating="false" class="update-picture-data green-btn"><i class="fas fa-check"></i>Valider</button>
+                </div>
+            </template>
+        </header>
+        <main>
+            {% block main %}
+                <!-- Main block -->
+            {% endblock %}
+        </main>
+        <footer>
+            {% block footer %}
+                <!-- Block containing footer stuff -->
+                <div class="footer-container">
+                    <p>@ 2019 Copyright - Métar'data</p>
+                </div>
+            {% endblock %}
+            {% block scripts %}
+                <!-- Block that will contains all scripts -->
+                <script
+    			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+    			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    			  crossorigin="anonymous"></script>
+                 <script src="public/assets/js/base.js"></script>
+                 <script
+                   src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+                  <script src="public/assets/js/base.js"></script>
+
+            {% endblock %}
+        </footer>
+    </body>
+</html>

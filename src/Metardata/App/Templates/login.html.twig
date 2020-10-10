@@ -1,0 +1,23 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/login.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <form id="connexion" action="" method="POST">
+        <label for="login">Nom d'utilisateur :</label>
+        <input name="login" type="text"/>
+        <label for="pwd">Mot de passe :</label>
+        <input name="pwd" type="password"/>
+        <button id="btn-connexion" type="submit">Connexion</button>
+    </form>
+    <input id="err" type="hidden" value="{{ errorMessage }}" />
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="public/assets/js/login.js"></script>
+{% endblock %}

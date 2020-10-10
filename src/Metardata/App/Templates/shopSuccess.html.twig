@@ -1,0 +1,25 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/shopSuccess.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="main-container">
+        {% if code == 0 %}
+            <h1>Merci d'avoir acheté sur Métar'data !</h1>
+            <p>Un mail contenant les images vous a été envoyé à l'adresse {{ mail }}.</p>
+            <a href="gallery">Voir plus d'images !</a>
+        {% else %}
+            <h1>Oups..Quelque chose s'est map passé, contactez-nous au plus vite grâce au formulaire de contact.
+            L'équipe Métar'data s'excuse pour se désagrément</h1>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script type="module" src="public/assets/js/shopSuccess.js"></script>
+{% endblock %}

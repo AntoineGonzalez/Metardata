@@ -1,0 +1,54 @@
+{% extends "template.html.twig" %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="public/assets/css/shop.css"/>
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    <div class="shop-preview">
+        <h2 class="bag">Panier</h2>
+
+        {% if pictures | length == 0 %}
+            <h4>Aucun article dans le panier</h4>
+        {% endif %}
+
+        {% for picture in pictures %}
+            <div picture-id={{picture.id}} class="product">
+                <img src="{{ picture.path }}" />
+                <div class="infos">
+                    <h3>Prix: 2.50€</h3>
+                    <button picture-id={{picture.id}} class="red-btn removeToShop" type="button">
+                        <i class="fas fa-shopping-cart"></i>
+                        Retirer
+                    </button>
+                </div>
+            </div>
+            {% if pictures | length > 1 %}
+                <div class="divider div-transparent"></div>
+            {% endif %}
+        {% endfor %}
+        <h3 class="total">Total: {{ total }}€</h3>
+        {% if pictures | length != 0 %}
+            <button class="process-paiement-btn" type="button">Passer la commande !</button>
+            <div class="mail-container">
+                <p class="warning">Attention vous devez posséder une adresse mail valide pour recevoir les images !</p>
+                <input type="text" name="firstname" class="firstname" value="" placeholder="Prénom">
+                <input type="email" name="mail-adress" class="mail-adress" value="" placeholder="Adresse mail">
+                <p class="selected-mail">Mail sélectionné : Aucun mail</p>
+                <button type="button" class="mail-adress-added">Valider</button>
+            </div>
+
+            <div class="paiements">
+                <h4 class="choose-paiement">Choisissez un moyen de paiement</h4>
+                <div class="cards-logos"></div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script type="module" src="public/assets/js/shop.js"></script>
+{% endblock %}
